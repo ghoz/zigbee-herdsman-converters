@@ -29,9 +29,9 @@
         "zigbee-shepherd"
     ],
     "scripts": {
-        "eslint": "eslint --max-warnings=0",
-        "pretty:write": "prettier --write .",
-        "pretty:check": "prettier --check .",
+        "eslint": "eslint --max-warnings=0 --cache --cache-location node_modules/.cache/eslint --cache-strategy=content",
+        "pretty:write": "prettier --cache --cache-location node_modules/.cache/prettier --cache-strategy=content --write .",
+        "pretty:check": "prettier --cache --cache-location node_modules/.cache/prettier --cache-strategy=content --check .",
         "test": "vitest run --config ./test/vitest.config.mts",
         "test:coverage": "vitest run --config ./test/vitest.config.mts",
         "test:watch": "vitest watch --config ./test/vitest.config.mts",

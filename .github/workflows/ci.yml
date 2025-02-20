@@ -17,6 +17,20 @@ jobs:
                   node-version: 20
                   registry-url: https://registry.npmjs.org/
                   cache: pnpm
+            - name: Cache eslint
+              uses: actions/cache@v4
+              with:
+                  path: node_modules/.cache/eslint
+                  key: eslint-${{ hashFiles('eslint.config.mjs') }}-${{ hashFiles('package-lock.json') }}
+                  restore-keys: |
+                      eslint-${{ hashFiles('eslint.config.mjs') }}
+            - name: Cache prettier
+              uses: actions/cache@v4
+              with:
+                  path: node_modules/.cache/prettier
+                  key: prettier-${{ hashFiles('.prettierrc') }}-${{ hashFiles('package-lock.json') }}
+                  restore-keys: |
+                      prettier-${{ hashFiles('.prettierrc') }}
             - name: Install dependencies
               run: pnpm i --frozen-lockfile
             - name: Build
